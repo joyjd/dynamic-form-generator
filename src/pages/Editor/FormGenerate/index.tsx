@@ -7,6 +7,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { FormContext } from "../../../context/context";
 import { GenericObject } from "../../../types/general";
 import Button from "../../../components/button";
+import { FormConfig } from "../../../config/formConfig";
 
 const FormGenerate = () => {
   const fb = useRef<HTMLDivElement>(null);
@@ -24,9 +25,7 @@ const FormGenerate = () => {
 
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
-        const formGenerator = $(fb.current).formBuilder({
-          disabledActionButtons: ["data", "clear", "save"],
-        });
+        const formGenerator = $(fb.current).formBuilder(FormConfig);
         setFormBuilder(formGenerator);
       }
     }
